@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Header from './components/Header';
+import AdiForm from './components/AdiForm';
+import EmpForm from './components/EmpForm';
+import CoreCapabilities from './components/CoreCapabilities';
 
-function App() {
+
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={<CoreCapabilities />} />  // Default route
+          <Route path="/employee-info" element={<EmpForm />} />  // Route for employee-info
+          <Route path="/core-capabilities" element={<CoreCapabilities />} />
+          <Route path="/competency-tracking" element={<AdiForm />} />
+          <Route path="/emp-form" element={<EmpForm />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
